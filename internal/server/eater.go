@@ -23,10 +23,15 @@ var foods = []Food{
 	{Label: "Tramontana", Image: "https://i.imgur.com/H8k1nMC.jpg"},
 	{Label: "Palačinkice", Image: "https://i.imgur.com/Og5GsWw.png"},
 	{Label: "Titanik", Image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RMS_Titanic_sea_trials_April_2%2C_1912.jpg/250px-RMS_Titanic_sea_trials_April_2%2C_1912.jpg"},
+	{Label: "Servus", Image: "https://i.imgur.com/xJWNHy4.jpg"},
+	{Label: "Zdravljak", Image: "https://i.imgur.com/z7DRhDE.jpg"},
 }
 
 // Eater http handler
 func (t *Server) Eater(w http.ResponseWriter, r *http.Request) {
+
+	log.Printf("r.UserAgent() %s\n", r.UserAgent())
+
 	chosenOne := rand.Intn(len(foods))
 	if time.Now().Weekday().String() == "Thursday" {
 		chosenOne = 0
